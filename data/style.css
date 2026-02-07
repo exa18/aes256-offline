@@ -23,6 +23,7 @@ textarea {
     border-radius: 2px;
     border:1px solid #39E;
     padding:3px;
+    resize: vertical;
 }
 input {
     border:1px solid #39E;
@@ -30,7 +31,9 @@ input {
 }
 input[type=button] {
     cursor: pointer;
-    background-color: white
+    background-color: white;
+    padding: 2px 14px;
+    margin: 0 8px;
 }
 input[type=button]:first {
 }

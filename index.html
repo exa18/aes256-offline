@@ -20,12 +20,12 @@
             <tbody>
                 <tr><td>Password (more than 10 characters to be safer)<br><input id="pass" type="text"></td></tr>
                 <tr><td><strong>Input</strong><br><textarea id="data"></textarea></td></tr>
-                <tr><td style="float:right"><input type="button" value="Encrypt"> <input type="button" value="Decrypt"></td></tr>
+                <tr><td style="text-align:center"><input type="button" value="Encrypt"> <input type="button" value="Decrypt"></td></tr>
                 <tr><td><strong>Output</strong><br><textarea id="out" readonly="readonly"></textarea></td></tr>
             </tbody>
         </table><br>
         <p><strong>You can decrypt with openssl like this in command promt:</strong></p>
-        <p class="simple">echo "U2FsdGVkX1+21O5RB08bavFTq7Yq/gChmXrO3f00tvJaT55A5pPvqw0zFVnHSW1o" | openssl enc -d -aes-256-cbc -a -k password</p>
+        <p class="simple">echo "U2FsdGVkX1+21O5RB08bavFTq7Yq/gChmXrO3f00tvJaT55A5pPvqw0zFVnHSW1o" | openssl enc -d -aes-256-cbc -md md5 -a -k password</p>
     </div>
 </body>
 </html>
