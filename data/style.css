@@ -1,59 +1,94 @@
+:root{
+    --bg: gray;
+    --form-bg: white;
+    --font-base: 16px;
+    --padding: 15px;
+    --window-width:500px;
+    --dark: #C4C4C4;
+    --white:#fff;
+    --black:#222;
+    --simple-bg:var(--black);
+    --simple-color:var(--white);
+    --border: #39E;
+    --btn-hover:var(--border);
+}
+
+* {
+  box-sizing: border-box;
+}
 body {
-    background:gray;
+    background:var(--bg);
     color:#333;
     font-family:sans-serif;
-    font-size: 10pt;
+    font-size: var(--font-base);
+    max-width: var(--window-width);
+    margin: 0 auto;
+    padding:var(--padding) 0;
+}
+h1 {
+    font-size: 145%;
+    color: var(--border);
+}
+table {
+    margin-top:var(--font-base);
+}
+h1+div, p>strong, td{
+    font-size:80%;
+}
+p {
+    margin: 0
 }
 #container {
-    background:white;
-    padding:7px;
-    width:600px;
-    margin:0 auto;
-    box-shadow: inset 0 0 1px #39E;
-    border-radius: 1px;
+    background:var(--form-bg);
+    padding:var(--padding);
+    width:100%;
 }
-.pagetitle {
-    color:#fff;
-    border-bottom:1px solid #333;
+textarea, input, table strong{
+    border:1px solid var(--border);
+    padding:calc(var(--padding)/3) calc(var(--padding)/2);
+    transition: all 0.2s;
+    font-size:var(--font-base);
+}
+input{
+    height: calc(var(--font-base)*2);
 }
 textarea {
     width:100%;
-    max-width: 594px;
-    height:150px;
-    border-radius: 2px;
-    border:1px solid #39E;
-    padding:3px;
+    height:calc(var(--font-base)*10);
     resize: vertical;
-}
-input {
-    border:1px solid #39E;
-    border-radius: 2px;
 }
 input[type=button] {
     cursor: pointer;
-    background-color: white;
-    padding: 2px 14px;
-    margin: 0 8px;
-}
-input[type=button]:first {
+    background-color: var(--form-bg);
+    margin: var(--padding);
 }
 textarea[readonly] {
-    height:180px;
-    background-color: #C4C4C4
+    background-color: var(--dark);
+}
+input[type=button]:is(:hover, :active) {
+    background: var(--btn-hover);
+    color: var(--white);
 }
 #pass {
     width: 100%;
-    margin-bottom: 15px;
-    padding: 2px
+    margin-bottom: var(--padding);
+}
+input:focus,
+textarea:focus {
+    outline: none;
+    border-width: 3px;
 }
 .simple {
-    font-size:8pt;
-    background-color:black;
-    padding:2px;
-    color:white;
-    border-radius:2px;
-    padding:4px
+    font-size:calc(var(--font-base)/1.25);
+    background-color:var(--simple-bg);
+    padding:calc(var(--padding)/3) calc(var(--padding)/2);
+    color:var(--simple-color);
 }
 table strong {
-    font-size: 10pt
+    border-bottom-width: 0;
+    display: none;
+    padding: 5px 10px;
+}
+td br {
+    display:none;
 }
