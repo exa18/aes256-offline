@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AES 256 Encrypt/Decrypt - Offline</title>
     <script type="text/javascript" src="data/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="data/gibberish-aes-1.0.0.min.js"></script>
+    <script type="text/javascript" src="data/gibberish-aes-1.1.0.min.js"></script>
     <link rel="stylesheet" href="data/style.css">
     <script type="text/javascript" src="data/main.js"></script>
 </head>
@@ -26,7 +26,7 @@
             </tbody>
         </table><br>
         <p><strong>You can decrypt with openssl like this in shell:</strong></p>
-        <p class="simple">echo "U2FsdGVkX1+21O5RB08bavFTq7Yq/gChmXrO3f00tvJaT55A5pPvqw0zFVnHSW1o" | openssl enc -d -aes-256-cbc -md md5 -a -k password</p>
+        <p class="simple">echo "U2FsdGVkX190dW+ZYo4fssWwV2WlpaGbAno9MmO8QskdshNigPdh47FBgY0hdsKX" | openssl enc -d -aes-256-cbc -pbkdf2 -a -k password</p>
     </div>
 </body>
 </html>

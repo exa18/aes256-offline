@@ -79,10 +79,11 @@ textarea:focus {
     border-width: 3px;
 }
 .simple {
-    font-size:calc(var(--font-base)/1.25);
+    font-size:calc(var(--font-base)/1.75);
     background-color:var(--simple-bg);
     padding:calc(var(--padding)/3) calc(var(--padding)/2);
     color:var(--simple-color);
+    word-wrap: anywhere;
 }
 table strong {
     border-bottom-width: 0;
