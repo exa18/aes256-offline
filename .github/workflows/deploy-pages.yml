@@ -1,0 +1,62 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare build directory (exclude src and hidden files)
+        run: |
+          mkdir -p _site
+          rsync -av --progress . _site \
+            --exclude src \
+            --exclude README.md \
+            --exclude .git \
+            --exclude .github \
+            --exclude _site
+
+      - name: Create and upload Release ZIP
+        if: github.event_name == 'release'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG_NAME="${{ github.event.release.tag_name }}"
+          (cd _site && zip -r "../aes256-offline-${TAG_NAME}.zip" .)
+          gh release upload "${TAG_NAME}" "aes256-offline-${TAG_NAME}.zip" --clobber
+
+      - name: Setup Pages
+        if: github.event_name != 'release'
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        if: github.event_name != 'release'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '_site'
+
+      - name: Deploy to GitHub Pages
+        if: github.event_name != 'release'
+        id: deployment
+        uses: actions/deploy-pages@v4
